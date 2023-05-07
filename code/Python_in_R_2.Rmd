@@ -1,0 +1,78 @@
+---
+title: "Python_in_R_2"
+author: "James"
+date: "2023-05-07"
+output: html_document
+---
+
+
+
+```{r setup, include=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+if (!require("pacman")) install.packages("pacman")
+
+pacman::p_load(pacman, reticulate, tidyverse, dplyr, ggplot2)
+
+# To specify a oarticular python to be loaded
+
+use_python("C:\\Users\\khonj\\anaconda3", required = TRUE)
+
+```
+
+
+```{python}
+# Loading interactive Python Shell for interactive python
+repl_python()
+```
+
+
+```{python Importing python packages}
+
+import os
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# For Machine learning applications:
+
+# from sklearn.linear_model import LinearRegression
+# from sklearn.model_selection import train_test_split
+# from sklearn.preprocessing import StandardScaler
+
+```
+
+
+```{python}
+# Sample data
+
+
+labels = ['Football', 'Netball', 'Handball', 'Bothball']
+sizes = [80, 60, 40, 24]
+colors = ['#004055', '#aa2e00', '#006080', '#b8860b']
+#inner_radius = 0.4
+
+# Create a pie chart
+fig, ax = plt.subplots()
+  ax.pie(sizes, 
+  labels=labels, 
+  colors=colors,
+  autopct='%1.1f%%',          # adds % values
+  pctdistance=0.75,           # sets position of % within teh doghnut
+  #textprops={'color':"w"},    # Change % text colour to white
+  startangle=90, 
+  wedgeprops={'edgecolor': 'white'})
+
+# Adding Circle in Pie chart
+circle = plt.Circle((0, 0), 0.45, color='white')
+ax.add_artist(circle)
+
+# Set a title
+# ax.set_title('Known Ball Games')
+
+# Display the chart
+print(plt.show())
+```
+

@@ -1,0 +1,118 @@
+---
+title: "Python_in_R"
+author: "James"
+date: "2023-05-07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r Install python packages}
+
+#install Python packages using py_install() function
+py_install(c("pandas","numpy","matplotlib","seaborn", "scikit-learn"))
+
+```
+
+
+```{r select python environment}
+
+# To specify a particular python to be loaded
+
+use_python("C:\\Users\\khonj\\anaconda3", required = TRUE)
+
+```
+
+
+```{r select python environment}
+
+# To show which python version is running
+
+print(reticulate::py_config())
+```
+
+
+```{python}
+# Loading interactive Python Shell
+repl_python()
+```
+
+
+```{python Importing python packages}
+
+import os
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import pandas_datareader as web # for reading online data
+import seaborn as sns
+
+# For Machine learning applications:
+
+# from sklearn.linear_model import LinearRegression
+# from sklearn.model_selection import train_test_split
+# from sklearn.preprocessing import StandardScaler
+
+```
+
+Now you can use your Python libraries and proceed as if you were in a Python editor.
+
+
+```{python}
+# np.random.seed(19680801)
+
+np.random.seed(19680801)
+
+N =50
+x = np.random.rand(N)
+y = np.random.rand(N)
+
+# colors = np.random.rand(N)
+
+colors = np.random.rand(N)
+
+area =  (30 * np.random.rand(N))**2
+
+plt.scatter(x,y, s=area, c=colors, alpha=0.5)
+
+print(plt.show())
+
+```
+
+
+```{python}
+source_python("flights.py")
+flights <- read_flights("flights.csv")
+
+library(ggplot2)
+ggplot(flights, aes(carrier, arr_delay)) + geom_point() + geom_jitter()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
